@@ -49,7 +49,7 @@
 			price: 25
 		}
 	};
-	var $container = null, $catalogue = null, $cart = null;
+	var $container = null, $catalogue = null, $cart = null, $total = null;
 	var createProductDiv = function (info) {
 		var $div = $('#om-signup-' + info.type).clone();
 		$div.removeAttr('id');
@@ -72,12 +72,15 @@
 		$product.hide();
 		$product.appendTo($cart);
 		$product.slideDown();
+		updateTotal();
 	};
 	var delHandler = function (ev) {
 		var $product = $(this).closest('.om-signup-product');
+		$product.data('price', 0);
 		$product.slideUp(function () {
 			$product.remove();
 		});
+		updateTotal();
 	};
 	var priceHandler = function (ev) {
 		var $this = $(this);
@@ -90,11 +93,20 @@
 		}
 		$product.data('price', price);
 		$product.find('.om-signup-price').text(price + ' €');
+		updateTotal();
+	};
+	var updateTotal = function () {
+		var sum = 0;
+		$cart.find('.om-signup-product').each(function (idx, el) {
+			sum += $(el).data('price');
+		});
+		$total.text(sum);
 	};
 	$(function () {
 		$container = $('#om-signup');
 		$catalogue = $('#om-signup-catalogue');
 		$cart = $('#om-signup-cart');
+		$total = $container.find('.om-signup-total-sum')
 		var active = $container.data('products').split(' ');
 		$.each(active, function (idx, product) {
 			if (typeof catalogue[product] != 'undefined') {
