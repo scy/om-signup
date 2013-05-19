@@ -3,6 +3,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="om-signup.css" />
+		<link rel="stylesheet" href="http://13.openmind-konferenz.de/wp-content/themes/om-thirteen/css/normalize-1.1.0.css?ver=3.5.1" />
+		<link rel="stylesheet" href="http://13.openmind-konferenz.de/wp-content/themes/om-thirteen/style.css?ver=3.5.1" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="om-signup.js"></script>
 	</head>
@@ -10,29 +12,37 @@
 		<div id="om-signup" data-products="UBER-EB UBER-ST KONF KONF-FT KONF-ST SHIRT">
 			<div class="om-signup-halfwide"><div id="om-signup-catalogue"></div></div>
 			<div class="om-signup-halfwide"><div id="om-signup-cart"></div></div>
-			<div class="om-signup-template" id="om-signup-ticket">
+			<div class="om-signup-template om-signup-product" id="om-signup-ticket">
 				<div class="om-signup-price"></div><h3>Ticket</h3>
 				<div class="om-signup-desc"></div>
-				<div class="om-signup-config">
-					<strong>Name:</strong>
-					<input type="text" name="om-signup-ticket-TPL-name" size="40" maxlength="40" />
-					(erscheint so auf deinem Namensschild)
-					<br />
-					<strong>Pronomen:</strong>
-					<select name="om-signup-ticket-TPL-gender">
-						<option value="sie">sie</option>
-						<option value="er">er</option>
-						<option value="es">es</option>
-						<option value="kein">keins, immer mit Namen</option>
-					</select>
-					(wie möchtest du angesprochen werden?)
-					<br />
-					<strong>Twitter-Account:</strong>
-					<input type="text" name="om-signup-ticket-TPL-twitter" size="15" maxlength="15" />
-					(wird, wenn angegeben, <em>veröffentlicht</em> auf der offiziellen Teilnehmer-Twitterliste)
-				</div>
+				<table class="om-signup-config">
+					<tr class="om-signup-price-row">
+						<th>Preis:</th>
+						<td><input type="text" name="om-signup-ticket-TPL-price" size="5" maxlength="5" />&nbsp;€<br />(was soll dein Ticket kosten?)</td>
+					</tr>
+					<tr>
+						<th>Name:</th>
+						<td><input type="text" name="om-signup-ticket-TPL-name" size="40" maxlength="40" /><br />(erscheint so auf deinem Namensschild)</td>
+					</tr>
+					<tr>
+						<th>Pronomen:</th>
+						<td><select name="om-signup-ticket-TPL-gender">
+								<option value="">bitte wählen</option>
+								<option value="sie">sie</option>
+								<option value="er">er</option>
+								<option value="es">es</option>
+								<option value="kein">keins, mit meinem Namen</option>
+						</select><br />(wie möchtest du angesprochen werden?)</td>
+					</tr>
+					<tr>
+						<th>Twitter-Account:</th>
+						<td><input type="text" name="om-signup-ticket-TPL-twitter" size="15" maxlength="15" /><br />(wird, wenn angegeben, <em>veröffentlicht</em> auf der offiziellen Teilnehmer-Twitterliste)</td>
+					</tr>
+				</table>
+				<div class="om-signup-add"><button>hinzufügen</button></div>
+				<div class="om-signup-del"><button>entfernen</button></div>
 			</div>
-			<div class="om-signup-template" id="om-signup-shirt">
+			<div class="om-signup-template om-signup-product" id="om-signup-shirt">
 				<div class="om-signup-price"></div><h3>T-Shirt</h3>
 				<div class="om-signup-desc"></div>
 				<div class="om-signup-config">
@@ -57,6 +67,8 @@
 					<input type="radio" id="om-signup-shirt-TPL-farbe-schwarz" name="om-signup-shirt-TPL-farbe" value="schwarz" />&nbsp;<label for="om-signup-shirt-TPL-farbe-schwarz">schwarz</label>
 					<input type="radio" id="om-signup-shirt-TPL-farbe-stein" name="om-signup-shirt-TPL-farbe" value="stein" />&nbsp;<label for="om-signup-shirt-TPL-farbe-stein">stein</label>
 				</div>
+				<div class="om-signup-add"><button>hinzufügen</button></div>
+				<div class="om-signup-del"><button>entfernen</button></div>
 			</div>
 		</div>
 	</body>

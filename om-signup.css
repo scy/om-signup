@@ -4,10 +4,53 @@
 
 .om-signup-price {
 	float: right;
-	background: red;
+	background: #e94e1b;
+	color: #fff;
+	padding: 0 0.5em;
+	white-space: nowrap;
+}
+
+.om-signup-add, .om-signup-del {
+	text-align: right;
+	margin: 0.3em 0;
 }
 
 .om-signup-halfwide {
 	width: 50%;
 	float: left;
+}
+
+.om-signup-product {
+	border: 1px solid #d8d8d8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 0.5em 0.5em 1em;
+	padding: 0.3em;
+	background: #e8e3c5;
+}
+
+.om-signup-product h3 {
+	margin: 0 0 0.3em;
+}
+
+.om-signup-config {
+	margin-top: 0.8em;
+}
+
+.om-signup-config td {
+	padding-bottom: 0.5em;
+}
+
+.om-signup-config th, .om-signup-config td {
+	vertical-align: top;
+	text-align: left;
+}
+
+#om-signup-catalogue .om-signup-config,
+#om-signup-catalogue .om-signup-del,
+#om-signup-cart .om-signup-add,
+.om-signup-price-not-editable .om-signup-price-row
+{
+	display: none;
 }

@@ -53,11 +53,43 @@
 	var createProductDiv = function (info) {
 		var $div = $('#om-signup-' + info.type).clone();
 		$div.removeAttr('id');
+		$div.data(info);
 		$div.find('h3').text(info.name);
-		$div.find('.om-signup-price').text(info.price + "€");
+		$div.find('.om-signup-price').text((
+			info.priceEditable ? '≥ ' : ''
+		) + info.price + " €");
+		$div.addClass('om-signup-price-' + (
+			info.priceEditable ? '' : 'not-'
+		) + 'editable');
 		$div.find('.om-signup-desc').text(info.desc);
-		$div.find('.om-signup-config').hide();
+		$div.find('.om-signup-price-row input').change(priceHandler);
+		$div.find('.om-signup-add button').click(addHandler);
+		$div.find('.om-signup-del button').click(delHandler);
 		$div.removeClass('om-signup-template').appendTo($catalogue);
+	};
+	var addHandler = function (ev) {
+		var $product = $(this).closest('.om-signup-product').clone(true);
+		$product.hide();
+		$product.appendTo($cart);
+		$product.slideDown();
+	};
+	var delHandler = function (ev) {
+		var $product = $(this).closest('.om-signup-product');
+		$product.slideUp(function () {
+			$product.remove();
+		});
+	};
+	var priceHandler = function (ev) {
+		var $this = $(this);
+		var $product = $this.closest('.om-signup-product');
+		$this.val($this.val().replace(/[^0-9]/, ''));
+		var price = parseInt($this.val(), 10);
+		if (price < $product.data('minPrice')) {
+			price = $product.data('minPrice');
+			$this.val(price);
+		}
+		$product.data('price', price);
+		$product.find('.om-signup-price').text(price + ' €');
 	};
 	$(function () {
 		$container = $('#om-signup');
@@ -73,6 +105,7 @@
 				if (typeof info.priceEditable == 'undefined') {
 					info.priceEditable = false;
 				}
+				info.minPrice = info.price;
 				createProductDiv(info);
 			}
 		});
