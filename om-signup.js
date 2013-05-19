@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
 	'use strict';
 	var catalogue = {
 		'UBER-EB': {
@@ -37,4 +37,28 @@
 			price: 25
 		}
 	};
-})();
+	var $container = null;
+	var createProductDiv = function (info) {
+		var $div = $('#om-signup-' + info.type).clone();
+		$div.removeAttr('id');
+		$div.find('h3').text(info.name);
+		$div.find('.om-signup-config').hide();
+		$div.removeClass('om-signup-template').appendTo($container);
+	};
+	$(function () {
+		$container = $('#om-signup');
+		var active = $container.data('products').split(' ');
+		$.each(active, function (idx, product) {
+			if (typeof catalogue[product] != 'undefined') {
+				var info = catalogue[product];
+				if (typeof info.type == 'undefined') {
+					info.type = 'ticket';
+				}
+				if (typeof info.priceEditable == 'undefined') {
+					info.priceEditable = false;
+				}
+				createProductDiv(info);
+			}
+		});
+	});
+})(jQuery);
