@@ -1,3 +1,13 @@
 .om-signup-template {
 	display: none;
 }
+
+.om-signup-price {
+	float: right;
+	background: red;
+}
+
+.om-signup-halfwide {
+	width: 50%;
+	float: left;
+}
