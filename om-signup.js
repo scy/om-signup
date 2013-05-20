@@ -50,6 +50,23 @@
 		}
 	};
 	var $container = null, $catalogue = null, $cart = null, $total = null;
+	var tplID = 0;
+	var setTplIDs = function ($prod) {
+		var tplIDIncreased = false;
+		$prod.find('[name], [id]').each(function (idx, el) {
+			var $el = $(el);
+			$.each(['name', 'id'], function (idx, attrName) {
+				var attr = $el.attr(attrName);
+				if (typeof attr != 'undefined' && attr.match(/-TPL[0-9]*-/)) {
+					if (!tplIDIncreased) {
+						tplIDIncreased = true;
+						tplID++;
+					}
+					$el.attr(attrName, attr.replace(/-TPL[0-9]*-/g, '-TPL' + tplID + '-'));
+				}
+			});
+		});
+	};
 	var createProductDiv = function (info) {
 		var $div = $('#om-signup-' + info.type).clone();
 		$div.removeAttr('id');
@@ -65,10 +82,12 @@
 		$div.find('.om-signup-price-row input').change(priceHandler);
 		$div.find('.om-signup-add button').click(addHandler);
 		$div.find('.om-signup-del button').click(delHandler);
+		setTplIDs($div);
 		$div.removeClass('om-signup-template').appendTo($catalogue);
 	};
 	var addHandler = function (ev) {
 		var $product = $(this).closest('.om-signup-product').clone(true);
+		setTplIDs($product);
 		$product.hide();
 		$product.appendTo($cart);
 		$product.slideDown();
