@@ -86,12 +86,17 @@
 		$div.removeClass('om-signup-template').appendTo($catalogue);
 	};
 	var addHandler = function (ev) {
-		var $product = $(this).closest('.om-signup-product').clone(true);
+		var $this = $(this);
+		var $product = $this.closest('.om-signup-product').clone(true);
 		setTplIDs($product);
 		$product.hide();
 		$product.appendTo($cart);
 		$product.slideDown();
 		updateTotal();
+		$this.text('OK, hinzugefügt!');
+		setTimeout(function () {
+			$this.text('hinzufügen');
+		}, 3000);
 	};
 	var delHandler = function (ev) {
 		var $product = $(this).closest('.om-signup-product');
