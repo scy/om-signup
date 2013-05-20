@@ -86,6 +86,10 @@
 		$div.removeClass('om-signup-template').appendTo($catalogue);
 	};
 	var addHandler = function (ev) {
+		if (ticketsInCart() >= 5) {
+			alert('Du kannst leider nicht mehr als fünf Tickets auf einmal bestellen.');
+			return;
+		}
 		var $this = $(this);
 		var $product = $this.closest('.om-signup-product').clone(true);
 		setTplIDs($product);
@@ -126,11 +130,20 @@
 		});
 		$total.text(sum);
 	};
+	var ticketsInCart = function () {
+		var count = 0;
+		$cart.find('.om-signup-product').each(function (idx, el) {
+			if ($(el).data('type') == 'ticket') {
+				count++;
+			}
+		});
+		return count;
+	};
 	$(function () {
 		$container = $('#om-signup');
 		$catalogue = $('#om-signup-catalogue');
 		$cart = $('#om-signup-cart');
-		$total = $container.find('.om-signup-total-sum')
+		$total = $container.find('.om-signup-total-sum');
 		var active = $container.data('products').split(' ');
 		$.each(active, function (idx, product) {
 			if (typeof catalogue[product] != 'undefined') {
