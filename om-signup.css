@@ -44,7 +44,7 @@
 	padding-bottom: 0.5em;
 }
 
-.om-signup-config th, .om-signup-config td, .om-signup-total th, .om-signup-total td {
+.om-signup-config th, .om-signup-config td, .om-signup-total th, .om-signup-total td, .om-signup-ordermeta th, .om-signup-ordermeta td {
 	vertical-align: top;
 	text-align: left;
 }
@@ -61,6 +61,15 @@
 
 .om-signup-total td {
 	text-align: right;
+}
+
+.om-signup-ordermeta {
+	margin-top: 1em;
+	width: 100%;
+}
+
+.om-signup-ordermeta td {
+	padding-bottom: 0.5em;
 }
 
 #om-signup-catalogue .om-signup-config,
