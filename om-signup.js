@@ -146,7 +146,20 @@
 	};
 	var validator = {
 		'ticket': function ($p) {
-			
+			var e = [];
+			if ($p.data('priceEditable')) {
+				var val = parseInt($p.find('.om-signup-price-field').val(), 10);
+				if (isNaN(val) || val < $p.data('minPrice')) {
+					e.push('Bitte gib einen Wunschpreis von mindestens ' + $p.data('minPrice') + '€ an.');
+				}
+			}
+			if (!$p.find('.om-signup-name-field').val().match(/[a-zA-Z0-9]/)) {
+				e.push('Bitte gib einen Namen für dein Namensschild an. Du musst es ja nicht tragen.');
+			}
+			if ($p.find('select').val() === '') {
+				e.push('Bitte wähle ein Pronomen aus, mit dem du angesprochen werden willst.');
+			}
+			return e;
 		},
 		'shirt': function ($p) {
 			var e = [];
