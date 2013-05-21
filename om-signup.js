@@ -49,7 +49,7 @@
 			price: 25
 		}
 	};
-	var $container = null, $catalogue = null, $cart = null, $total = null;
+	var $container = null, $catalogue = null, $cart = null, $total = null, $ordermeta = null;
 	var tplID = 0;
 	var setTplIDs = function ($prod) {
 		var tplIDIncreased = false;
@@ -128,6 +128,11 @@
 		$cart.find('.om-signup-product').each(function (idx, el) {
 			sum += $(el).data('price');
 		});
+		if (sum === 0) {
+			$ordermeta.hide();
+		} else {
+			$ordermeta.show();
+		}
 		$total.text(sum);
 	};
 	var ticketsInCart = function () {
@@ -144,6 +149,7 @@
 		$catalogue = $('#om-signup-catalogue');
 		$cart = $('#om-signup-cart');
 		$total = $container.find('.om-signup-total-sum');
+		$ordermeta = $('#om-signup-ordermeta');
 		var active = $container.data('products').split(' ');
 		$.each(active, function (idx, product) {
 			if (typeof catalogue[product] != 'undefined') {
