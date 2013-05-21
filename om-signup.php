@@ -80,7 +80,7 @@ function omsignup_detect_submission() {
 		'data' => json_encode($data),
 	);
 	$success = false;
-	for ($try = 0; $try < 5; $try++) {
+	for ($try = 0; $try < 50; $try++) {
 		$id = '';
 		for ($i = 0; $i < 6; $i++) {
 			$id .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
