@@ -215,6 +215,9 @@ if(typeof JSON!=="object"){JSON={}}(function(){"use strict";function f(e){return
 	};
 	$(function () {
 		$container = $('#om-signup');
+		if ($container.length === 0) {
+			return;
+		}
 		$catalogue = $('#om-signup-catalogue');
 		$cart = $('#om-signup-cart');
 		$total = $container.find('.om-signup-total-sum');

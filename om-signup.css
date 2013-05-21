@@ -53,6 +53,10 @@
 	text-align: left;
 }
 
+.om-signup-config th, .om-signup-ordermeta th {
+	padding-right: 0.5em;
+}
+
 .om-signup-table-wrapper {
 	padding: 0 0.5em;
 }
