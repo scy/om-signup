@@ -171,11 +171,27 @@
 			}
 			return e;
 		},
+		'meta': function ($p) {
+			var e = [];
+			if (!$p.find('[name="om-signup-order-name"]').val().match(/[a-zA-Z0-9]/)) {
+				e.push('Bitte gib uns deinen bürgerlichen Namen an, damit wir eine Rechnung erstellen können – sowohl für dich als auch für uns.');
+			}
+			if (!$p.find('[name="om-signup-order-street"]').val().match(/[a-zA-Z0-9]/)) {
+				e.push('Bitte gib deine Straße und Hausnummer für die Rechnung an.');
+			}
+			if (!$p.find('[name="om-signup-order-city"]').val().match(/[a-zA-Z0-9]/)) {
+				e.push('Bitte gib deine Postleitzahl und deinen Wohnort für die Rechnung an.');
+			}
+			if (!$p.find('[name="om-signup-order-email"]').val().match(/[a-zA-Z0-9]@[a-zA-Z0-9]/)) {
+				e.push('Bitte gib unbedingt eine gültige E-Mail-Adresse an, damit wir dich erreichen und dir dein Ticket zusenden können!');
+			}
+			return e;
+		}
 	};
 	var validateAll = function () {
 		var errCount = 0;
-		$cart.find('.om-signup-error').remove();
-		$cart.find('.om-signup-product').each(function (idx, el) {
+		$('.om-signup-error').remove();
+		$cart.find('.om-signup-product').add('#om-signup-ordermeta').each(function (idx, el) {
 			var $p = $(el);
 			if (typeof validator[$p.data('type')] == 'function') {
 				var errors = validator[$p.data('type')]($p);
