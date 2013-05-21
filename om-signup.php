@@ -27,6 +27,14 @@ function omsignup_install() {
 }
 
 function omsignup_content($matches) {
+	if (isset($_GET['omsignup_success']) && preg_match('/^[A-Z]{6}$/', $_GET['omsignup_success'])) {
+		$id = $_GET['omsignup_success'];
+		$html  = '<div class="om-signup-success">';
+		$html .= '<p>Deine Bestellung wurde erfolgreich gespeichert und trägt die Kennung <strong>' . $id . '</strong>. ';
+		$html .= 'Alle weiteren Informationen hast du per E-Mail zugesandt bekommen.</p>';
+		$html .= '<p>Vielen Dank für deinen Einkauf. Wir sehen uns auf der openmind!</p>';
+		return $html;
+	}
 	$html = file_get_contents(dirname(__FILE__) . '/template.html');
 	$products = preg_replace('/ +/', ' ', trim($matches[1]));
 	return str_replace('data-products=""', "data-products=\"$products\"", $html);
@@ -83,7 +91,11 @@ function omsignup_detect_submission() {
 			break;
 		}
 	}
-	wp_redirect(get_permalink(), 303);
+	$permalink = get_permalink();
+	$permalink .= (strpos($permalink, '?') === false)
+	            ? "?omsignup_success=$id"
+	            : "&omsignup_success=$id";
+	wp_redirect($permalink, 303);
 }
 
 register_activation_hook(__FILE__, 'omsignup_install');
