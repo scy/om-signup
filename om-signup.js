@@ -3,7 +3,7 @@
 	var UBERdesc = 'Teilnahme an der Konferenz und Übernachtung in der Jugendherberge.';
 	var KONFdesc = 'Teilnahme an der Konferenz, selbst organisierte Übernachtung.';
 	var FTdesc = ' Reserviertes Kontingent für Leute, die noch nie an einer openmind teilgenommen haben.';
-	var STdesc = ' Von dir festlegbarer Preis ohne Obergrenze. Für Leute, die freiwillig mehr bezahlen möchten, um unser Budget für Referenten und Sozialtickets aufzustocken.';
+	var STdesc = ' Von dir festlegbarer Preis ohne Obergrenze. Für Leute, die freiwillig mehr bezahlen möchten, um unser Budget für Referent*innen und Sozialtickets aufzustocken.';
 	var catalogue = {
 		'UBER-EB': {
 			name: 'mit Übernachtung (Early Bird)',
