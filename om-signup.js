@@ -149,7 +149,14 @@
 			
 		},
 		'shirt': function ($p) {
-			return ['foo'];
+			var e = [];
+			if ($p.find('select').val() === '') {
+				e.push('Bitte wähle Schnitt und Größe aus.');
+			}
+			if ($p.find('input:checked').length === 0) {
+				e.push('Bitte wähle die Farbe aus.');
+			}
+			return e;
 		},
 	};
 	var validateAll = function () {
