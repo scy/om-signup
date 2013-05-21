@@ -53,6 +53,12 @@
 	padding: 0 0.5em;
 }
 
+.om-signup-error {
+	border: 1px solid #c00;
+	background-color: #eeee4d;
+	margin-top: 0.8em;
+}
+
 .om-signup-total {
 	margin-top: 1em;
 	border-top: 1px solid #d8d8d8;

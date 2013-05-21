@@ -144,12 +144,45 @@
 		});
 		return count;
 	};
+	var validator = {
+		'ticket': function ($p) {
+			
+		},
+		'shirt': function ($p) {
+			return ['foo'];
+		},
+	};
+	var validateAll = function () {
+		var errCount = 0;
+		$cart.find('.om-signup-error').remove();
+		$cart.find('.om-signup-product').each(function (idx, el) {
+			var $p = $(el);
+			if (typeof validator[$p.data('type')] == 'function') {
+				var errors = validator[$p.data('type')]($p);
+				if ($.isArray(errors) && errors.length > 0) {
+					errCount += errors.length;
+					var err = $('<div>').addClass('om-signup-error');
+					var ul = $('<ul>').appendTo(err);
+					$.each(errors, function (idx, errText) {
+						$('<li>').text(errText).appendTo(ul);
+					});
+					err.insertAfter($p.find('.om-signup-desc'));
+				}
+			}
+		});
+		if (errCount) {
+			alert('Es gibt Probleme mit deiner Eingabe. Bitte prüfe deine Bestellung nochmal.');
+			return false;
+		}
+		return true;
+	};
 	$(function () {
 		$container = $('#om-signup');
 		$catalogue = $('#om-signup-catalogue');
 		$cart = $('#om-signup-cart');
 		$total = $container.find('.om-signup-total-sum');
 		$ordermeta = $('#om-signup-ordermeta');
+		$('.om-signup-submit').click(validateAll);
 		var active = $container.data('products').split(' ');
 		$.each(active, function (idx, product) {
 			if (typeof catalogue[product] != 'undefined') {
