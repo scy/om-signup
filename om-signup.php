@@ -193,6 +193,7 @@ function omsignup_success_mail($to, $id, $data, $raw = false) {
 	$text .= "   Konto 7006027903\n";
 	$text .= "   BLZ 43060967 (GLS-Bank)\n";
 	$text .= "   Verwendungszweck: om13 $id\n\n";
+	$text .= "Falls du diese Mail fälschlicherweise erhalten und gar nichts bestellt hast, musst du dich nicht weiter darum kümmern. Nicht bezahlte Tickets werden nach einer gewissen Zeit wieder storniert.\n\n";
 	$text .= "Bei Fragen stehen wir dir unter tickets@openmind-konferenz.de gern zur Verfügung. Bitte gib unbedingt immer deine Bestell-ID an, sie lautet: $id\n\n";
 	$text .= "Wir freuen uns auf deinen Besuch!\n\n";
 	$text .= "     Dein openmind-Team\n\n";
