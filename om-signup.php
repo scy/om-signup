@@ -75,7 +75,7 @@ function omsignup_sanitize_data($data) {
 		'name' => '[a-zA-Z0-9]',
 		'street' => '[a-zA-Z0-9]',
 		'city' => '[a-zA-Z0-9]',
-		'email' => '[a-zA-Z0-9]@[a-zA-Z0-9]',
+		'email' => '.*[a-zA-Z0-9].*@.*[a-zA-Z0-9].*',
 		'comment' => '.*',
 	);
 	$posrules = array(

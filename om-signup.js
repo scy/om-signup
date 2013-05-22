@@ -190,7 +190,7 @@ if(typeof JSON!=="object"){JSON={}}(function(){"use strict";function f(e){return
 			if (!$p.find('[name="om-signup-order-city"]').val().match(/[a-zA-Z0-9]/)) {
 				e.push('Bitte gib deine Postleitzahl und deinen Wohnort für die Rechnung an.');
 			}
-			if (!$p.find('[name="om-signup-order-email"]').val().match(/[a-zA-Z0-9]@[a-zA-Z0-9]/)) {
+			if (!$p.find('[name="om-signup-order-email"]').val().match(/.*[a-zA-Z0-9].*@.*[a-zA-Z0-9].*/)) {
 				e.push('Bitte gib unbedingt eine gültige E-Mail-Adresse an, damit wir dich erreichen und dir dein Ticket zusenden können!');
 			}
 			return e;
