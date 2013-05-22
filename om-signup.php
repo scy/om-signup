@@ -43,17 +43,24 @@ function omsignup_content($matches) {
 	}
 	$html = file_get_contents(dirname(__FILE__) . '/template.html');
 	$products = preg_replace('/ +/', ' ', trim($matches[1]));
-	return str_replace('data-products=""', "data-products=\"$products\"", $html);
+	$html = str_replace('data-products=""', "data-products=\"$products\"", $html);
+	$html = str_replace('"om13-shirts-website.png"', '"' . omsignup_base() . '/om13-shirts-website.png"', $html);
+	return $html;
 }
 
 function omsignup_content_filter($content) {
 	return preg_replace_callback('/(?:<p>)?\[om-signup([A-Za-z0-9._ -]*)\](?:<\/p>)?/', 'omsignup_content', $content);
 }
 
-function omsignup_scripts() {
+function omsignup_base() {
 	$base = trailingslashit(get_bloginfo('wpurl'))
 	      . PLUGINDIR . '/'
 	      . dirname(plugin_basename(__FILE__));
+	return $base;
+}
+
+function omsignup_scripts() {
+	$base = omsignup_base();
 	wp_enqueue_script(
 		'omsignup_form',
 		"$base/om-signup.js",
