@@ -122,9 +122,9 @@ function omsignup_detect_submission() {
 		return false;
 	}
 	$chars = 'BCDFGHJKLMNPQRSTVWXYZ';
-	$data = json_decode($_POST['om-signup-data']);
-	if ($data === false) {
-		$data = json_decode(stripslashes($_POST['om-signup-data']));
+	$data = json_decode($_POST['om-signup-data'], true);
+	if ($data === null) {
+		$data = json_decode(stripslashes($_POST['om-signup-data']), true);
 	}
 	if (($data = omsignup_sanitize_data($data)) === false) {
 		return false;
