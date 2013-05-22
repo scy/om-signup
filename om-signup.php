@@ -6,6 +6,12 @@ Version: 0.1.0
 Author: Tim Weber
 */
 
+// HEY H4X0R!
+// Ja, die Checks hier im Code sind suboptimal. Aber das ganze Ding ist nichts
+// weiter als ein großer Form-Mailer. Wir kriegen eine Mail und bearbeiten sie
+// manuell. Den Preis von irgendwas verändern ist also möglich, fällt aber auf.
+// Hier gibt es nichts zu holen, investier deine Energie in was anderes. :)
+
 function omsignup_install() {
 	global $wpdb;
 	$tables = array(
