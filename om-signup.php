@@ -199,14 +199,19 @@ function omsignup_success_mail($to, $id, $data, $raw = false) {
 	$text .= "     Dein openmind-Team\n\n";
 	if ($raw) {
 		$text .= "\n\n" . implode("\t", array(
+			$id,
+			'offen',
 			$data['name'],
 			$data['street'],
 			$data['city'],
 			$data['email'],
 			$data['comment'],
 		)) . "\n\n";
+		$posnr = 1;
 		foreach ($data['positions'] as $pos) {
 			$text .= implode("\t", array(
+				$id,
+				$posnr++,
 				$pos['code'],
 				$pos['price'],
 				isset($pos['name']) ? $pos['name'] : '',
