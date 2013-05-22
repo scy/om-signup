@@ -122,10 +122,10 @@ function omsignup_detect_submission() {
 		return false;
 	}
 	$chars = 'BCDFGHJKLMNPQRSTVWXYZ';
-	$postvar = get_magic_quotes_gpc()
-	         ? stripslashes($_POST['om-signup-data'])
-	         : $_POST['om-signup-data'];
-	$data = json_decode($postvar, true);
+	$data = json_decode($_POST['om-signup-data']);
+	if ($data === false) {
+		$data = json_decode(stripslashes($_POST['om-signup-data']));
+	}
 	if (($data = omsignup_sanitize_data($data)) === false) {
 		return false;
 	}
